@@ -1,18 +1,20 @@
 {
-  "name": "firstappexpress",
-  "version": "0.0.0",
-  "private": true,
+  "name": "projet_seance4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "morgan": "~1.9.1",
-    "os": "^0.1.2",
-    "twig": "~0.10.3"
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
+    "http": "^0.0.1-security",
+    "mongoose": "^6.9.2"
   }
 }
