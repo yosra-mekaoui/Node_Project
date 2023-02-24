@@ -1,28 +1,32 @@
-const express=require('express');
-const http=require('http');
-const mongo=require('mongoose');
+const express = require("express");
+const http = require("http");
+const mongo = require("mongoose");
+const mongoconnection = require("./config/mongoconnection.json");
 const bodyParser = require("body-parser");
-const mongoconnection=require('./config/mongoconnection.json');
 
-
-
-
-mongo.connect('mongodb://127.0.0.1:27017/4twin8', {
-   // mongoose.connect('mongodb+srv://@gewinner.xsbnq.mongodb.net/gewinner-api?retryWrites=true&w=majority', {
+mongo.connect(mongoconnection.url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    }).then(() => {
-        console.log('Connected to database successfully ');
-    }).catch(() => {
-        console.log('ERROR : unable to connect to database ');
-    });
+  })
+  .then(() => {
+    console.log("Database Connected");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
-var app=express();
-app.use(bodyParser.urlencoded({ extended: true }));
+var app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const UserRouter=require('./routes/user');
-app.use("/user", UserRouter);
+const StudentRouter = require("./Routes/studentRoutes");
+app.use("/", StudentRouter);
 
-const server=http.createServer(app);
-server.listen(3000,()=>console.log("server is run"));
+
+
+const server = http.createServer(app);
+server.listen(3000, () => {
+  console.log("Server is running.");
+
+});
+
